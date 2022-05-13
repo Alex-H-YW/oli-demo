@@ -1,0 +1,38 @@
+.Params {
+    display: flex;
+    width: 100%;
+    padding: 15px;
+    flex-direction: column;
+    text-align: left;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 40px;
+    .ListParms {
+        width: 100%;
+        flex-grow: 1;
+        background-color: rgb(249, 249, 249);
+        border: 1px solid rgb(230, 225, 225);
+        border-radius: 10px;
+    }
+    .paramsRow {
+        padding: 6px;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+    .requireParamsCotent {
+        display: flex;
+        padding: 0;
+        li {
+            list-style: none;
+            padding: 5px;
+            &.paramsName {
+                font-weight: bolder;
+            }
+            &:last-child {
+                color: red;
+            }
+        }
+    }  
+    
+}

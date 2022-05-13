@@ -1,8 +1,11 @@
 import React, { FC } from 'react';
 import "./Header.css";
 import {Link} from 'react-router-dom';
+import { Input } from 'antd';
 
 const Header: FC = () => {
+    const { Search } = Input;
+    const onSearch = () => console.log();
   return (
     <div className='headerContent'>
         <div className='nav-left'>
@@ -23,7 +26,7 @@ const Header: FC = () => {
         </ul>
         </div>
         <div className='nav-right'>
-            <button>Search</button>
+        <Search placeholder="input search" onSearch={onSearch} style={{ width: 200 }} />
 
         </div>
     </div>

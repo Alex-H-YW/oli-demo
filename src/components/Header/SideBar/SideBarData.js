@@ -7,11 +7,11 @@ export  const SideBarData= [
    },
    {
     title: 'Insider Trades',
-    path:'/Intro',
+    path:'InsiderTrades',
    },
    {
     title: 'Security',
-    path:'/Intro',
+    path:'Security',
    },
    {
     title: 'Security Short Volume',

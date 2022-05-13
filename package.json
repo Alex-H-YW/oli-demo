@@ -3,6 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.1.1",
+    "@fortawesome/free-regular-svg-icons": "^6.1.1",
+    "@fortawesome/free-solid-svg-icons": "^6.1.1",
+    "@fortawesome/react-fontawesome": "^0.1.18",
+    "@react-icons/all-files": "^4.1.0",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.2.0",
     "@testing-library/user-event": "^13.5.0",
@@ -14,9 +19,10 @@
     "@types/react-router-dom": "^5.3.3",
     "antd": "^4.20.2",
     "less": "^4.1.2",
-    "less-loader": "^10.2.0",
+    "monaco-editor": "^0.33.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
+    "react-icons": "^4.3.1",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
     "typescript": "^4.6.4",
@@ -47,6 +53,11 @@
     ]
   },
   "devDependencies": {
-    "@teamsupercell/typings-for-css-modules-loader": "^2.5.1"
+    "@teamsupercell/typings-for-css-modules-loader": "^2.5.1",
+    "@types/lodash": "^4.14.182",
+    "less-loader": "^10.2.0",
+    "node-sass": "^7.0.1",
+    "path-browserify": "^1.0.1",
+    "sass-loader": "^12.6.0"
   }
 }
