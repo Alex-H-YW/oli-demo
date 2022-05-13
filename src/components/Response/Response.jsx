@@ -20,7 +20,8 @@ const Response = ({apiInfo}) => {
     const handleCancel = () => {
     setIsModalVisible(false);
   };
-  console.log("RRRR",apiInfo.responseKey);
+
+  console.log("RRRR",apiInfo.responseKey.map((item)=>(item)));
   return (
       
     <div className={styles.response}>
@@ -49,13 +50,14 @@ const Response = ({apiInfo}) => {
             <div>
                 <h4>RESPONSE BODY</h4>
                 <div className={styles.modalContent}>
-                    <span>
-                        {apiInfo?.responsKey?.forEach(element => 
-                            element
-                        )}
-                    </span>
-                    
-                   
+                    {apiInfo?.responsKey?.map(
+                        item => (
+                            <ul>
+                                <li key={item}>{item}</li>
+                                <li>xxxx</li>
+                            </ul>
+                        )        
+                    )}
                 </div>
             </div>
             

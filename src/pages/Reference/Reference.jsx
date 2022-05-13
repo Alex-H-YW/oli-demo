@@ -17,10 +17,10 @@ const Reference = () => {
     const urlId = search.split('=')[1];
     console.log(urlId);
     if(!isEmpty(urlId)){
-      const data = apiList.filter(item =>{
+      const data = apiList.find(item =>{
               return item.id === Number(urlId)
           })   
-      setApiInfo(data[0]);
+      setApiInfo(data);
     }      
     },[search])
   
