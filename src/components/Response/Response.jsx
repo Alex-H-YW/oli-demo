@@ -8,10 +8,12 @@ import { Modal } from 'antd';
 
 const Response = ({apiInfo}) => {
     const [isModalVisible, setIsModalVisible] = useState(false);
+    const [modelShow, setModelShow] = useState();
 
-    const showModal = () => {
-    setIsModalVisible(true);
-  };
+    const showModal = (value) => {
+        setIsModalVisible(true);
+        setModelShow(value);
+        };
 
     const handleOk = () => {
     setIsModalVisible(false);
@@ -32,7 +34,7 @@ const Response = ({apiInfo}) => {
                     <BsFillRecordFill className={styles.iconGreenCircle} />
                     <span>200</span>
                 </div> 
-                <div className={styles.responseModal} onClick={showModal}>
+                <div className={styles.responseModal} onClick={()=>showModal(true)}>
                     < AiOutlineArrowsAlt />
                 </div>
             </List.Item>
@@ -41,7 +43,7 @@ const Response = ({apiInfo}) => {
                     <BsFillRecordFill className={styles.iconRedCircle}/>
                     <span>400</span>
                 </div> 
-                <div className={styles.responseModal} onClick={showModal}>
+                <div className={styles.responseModal} onClick={()=> showModal(false)}>
                     < AiOutlineArrowsAlt />
                 </div>
             </List.Item>
@@ -50,14 +52,14 @@ const Response = ({apiInfo}) => {
             <div>
                 <h4>RESPONSE BODY</h4>
                 <div className={styles.modalContent}>
-                    {apiInfo?.responsKey?.map(
-                        item => (
+                    {modelShow? (apiInfo.responseKey.map(
+                        (item, index) => (
                             <ul>
-                                <li key={item}>{item}</li>
-                                <li>xxxx</li>
+                                <li key={index}>{item}</li>
                             </ul>
                         )        
-                    )}
+                                )
+                    ):<span>"error"</span>}
                 </div>
             </div>
             
