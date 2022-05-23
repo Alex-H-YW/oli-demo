@@ -21,7 +21,7 @@ const Response = ({apiInfo}) => {
     setIsModalVisible(false);
   };
 
-  console.log("RRRR",apiInfo.responseKey.map((item)=>(item)));
+  //console.log("RRRR",apiInfo.responseKey.map((item)=>(item)));
   return (
       
     <div className={styles.response}>

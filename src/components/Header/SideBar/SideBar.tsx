@@ -1,21 +1,19 @@
 import {FC, useContext} from 'react';
 import styles from './SideBar.less';
-import {SideBarData} from './SideBarData';
 import { Link } from 'react-router-dom';
 import { Button } from 'antd';
 import DataContext from '../../Context';
+//import { IApiList } from '../../../interface/interface'
 
-
-const SideBar = () => {
-  const apiList = useContext(DataContext)
-  console.log(apiList);
+const SideBar: FC = () => {
+  const apiList:any = useContext(DataContext);
 
   return (
     <div className={styles.sideBarContent}>
         <h3>WEB DATA API</h3>
         <ul>
             <li>
-              {apiList.map(item => (
+              {apiList.map((item:{id:number, name:string}) => (
                 <li key={item.id}>
                 <Link to ={`/reference/?id=${item.id}`} className={styles.Links}>
                     <span>{item.name}</span>
@@ -24,9 +22,7 @@ const SideBar = () => {
                 </li>
                 )      
               )
-            }
-              
-                
+            }   
             </li>
   
         </ul>

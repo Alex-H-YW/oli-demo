@@ -1,21 +1,40 @@
+export type IApiList = IApiItem[];
 
+type IApiItem = {
+  id: number;
+  name: string;
+  url: string;
+  description: string;
+  params: IParams[];
+  responseKey: string[];
+};
 
-export interface ApiListState {
-    ApiList: ListBase[]
+type IParams = {
+  id?: number;
+  name: string;
+  type: string;
+  description: string;
+  require: string;
+};
 
-}
-export interface ListBase {
-    id: number,
-    name:string, 
-    url: string, 
-    description: string, 
-    params: ParamsBase[],
+// export interface IApiList {
+//     IApiList: IApiItem[];
 
-}
+// }
+// export interface IApiItem {
+//     id: number;
+//     name: string;
+//     url: string;
+//     description: string;
+//     params: IParams[];
+//     responseKey: string[];
 
-export interface ParamsBase {
-    name: string,
-    type: string, 
-    description:string, 
-    require:string
-}
+// }
+
+// export interface IParams {
+//     id?: number;
+//     name: string;
+//     type: string;
+//     description: string;
+//     require: string;
+// }

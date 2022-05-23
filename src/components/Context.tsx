@@ -1,16 +1,33 @@
 import React, { useState } from 'react'
-//import { ApiListState } from ".././interface/interface"
+import { IApiList } from ".././interface/interface"
+// type IApiList = IApiItem[];
 
+// type IApiItem = {
+//   id: number;
+//   name: string;
+//   url: string;
+//   description: string;
+//   params: IParams[];
+//   responseKey: string[];
+// };
+
+// type IParams = {
+//   id?: number;
+//   name: string;
+//   type: string;
+//   description: string;
+//   require: string;
+// };
 
 const DataContext = React.createContext({});
 
-const ApiList = [
+const ApiList: IApiList = [
     {id:0, 
-        name: "股票列表", 
-        url: "new_watchlist", 
-        description:"获取澳股+美股关注表代码", 
-        params:[{name: "country",type: "string", description:"AU or US 澳股或美股, 不加参数选取所有澳股美股", require:"可选"}],
-        responseKey: ["symbol"]
+    name: "股票列表", 
+    url: "new_watchlist", 
+    description:"获取澳股+美股关注表代码", 
+    params:[{name: "country",type: "string", description:"AU or US 澳股或美股, 不加参数选取所有澳股美股", require:"可选"}],
+    responseKey: ["symbol"]
     },
     {id:1, 
     name: "股票列表(含全称)", 
@@ -48,7 +65,7 @@ const ApiList = [
 ]
 
 
-export const DataProvider = ({children}) => {
+export const DataProvider = ({children}:any) => {
     const [apiInterface, setApiInterface ] = useState(ApiList)
 
         //通过Provider组件的value将state提供出去

@@ -1,0 +1,77 @@
+:global(.ant-input-prefix) {
+    color: white;
+}
+.codeMirror{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    max-width: 500px;
+    .HeaderApi{
+        background-color: #242e35;
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        border-radius: 10px;
+        
+        h4 {
+            padding-top: 5px;
+            padding-left: 15px;
+            color: #c6cbd3;
+            text-align: left;
+            font-weight: bold;
+            border-bottom: 1px solid black;
+        }
+        .installContent {
+            display:flex;
+            background-color: #242e35;
+            flex-direction: column;
+            align-items: center;
+            border-bottom: 1px solid;
+            h4 {
+                align-self: start;
+                color: #c6cbd3;
+                border-bottom:none;
+            }
+            .installBtn{
+                border-color: #384248;
+                background-color: #384248;
+                text-align: left;
+                width: 95%;
+                border-radius: 8px;  
+                input {
+                    background-color: #384248;
+                    color: #12ca93;
+                    prefix {
+                        color: white!important;
+
+                    }
+                }
+            }
+            .req{
+                padding-top: 10px;
+            }
+        }
+       
+    }
+    .try{
+        display: flex;
+        justify-content: end;
+        background-color: #384248;
+        padding: 10px;
+        border-radius: 0 0 10px 10px;
+        .tryBtn{
+            background-color: #087515;
+            border-radius:10px;
+            border: none;
+            span{
+                color: white;
+                font-weight: bolder;
+               
+            }  
+        }
+    }
+
+
+}
+
+

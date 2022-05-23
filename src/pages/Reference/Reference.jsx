@@ -1,4 +1,4 @@
-import { useContext,useState, useEffect} from 'react';
+import { useContext,useState, useEffect, useRef} from 'react';
 import SideBar from '../../components/Header/SideBar/SideBar';
 import Response from '../../components/Response/Response';
 import Intro from '../../components/Intro/Intro';
@@ -13,9 +13,18 @@ const Reference = () => {
   const {search}  =  useLocation();
   const apiList = useContext(DataContext);
   const [apiInfo, setApiInfo] = useState();
+  //const paramFormRef = useRef();
+  const [formData, setFormData] =useState();
+ 
+    const updateFormData = (values) => {
+      setFormData({
+        ...formData,
+        ...values
+      });
+    };
+//console.log("test", formData);
   useEffect(() => {
     const urlId = search.split('=')[1];
-    console.log(urlId);
     if(!isEmpty(urlId)){
       const data = apiList.find(item =>{
               return item.id === Number(urlId)
@@ -38,7 +47,7 @@ const Reference = () => {
           </Row>
           <Row>
           {!isEmpty(apiInfo) &&
-             <Params apiInfo={apiInfo}/>
+             <Params apiInfo={apiInfo} update={updateFormData}/>
           }
           </Row>
           <Row>
@@ -48,8 +57,10 @@ const Reference = () => {
           </Row>
           
         </Col>
-        <Col span={10}>
-          <CodeEdit/>
+        <Col span={8}>
+          {!isEmpty(apiInfo) &&
+            <CodeEdit formData={formData} apiInfo={apiInfo}/> 
+          }
       </Col>
     </Row>
     </div>

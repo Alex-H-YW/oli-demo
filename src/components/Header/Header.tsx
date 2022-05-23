@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import "./Header.css";
+import styles from "./Header.less";
 import {Link} from 'react-router-dom';
 import { Input } from 'antd';
 
@@ -7,9 +7,9 @@ const Header: FC = () => {
     const { Search } = Input;
     const onSearch = () => console.log();
   return (
-    <div className='headerContent'>
-        <div className='nav-left'>
-            <ul className="nav">
+    <div className={styles.headerContent}>
+        <div className={styles.navLeft}>
+            <ul className={styles.nav}>
                 <li className="nav-item">
                     <a className="nav-link active" href="#">Home</a>
                 </li>
@@ -25,9 +25,8 @@ const Header: FC = () => {
                 </li>
         </ul>
         </div>
-        <div className='nav-right'>
-        <Search placeholder="input search" onSearch={onSearch} style={{ width: 200 }} />
-
+        <div className={styles.navRight}>
+            <Search placeholder="input search" onSearch={onSearch} style={{ width: 200 }} />
         </div>
     </div>
   )
