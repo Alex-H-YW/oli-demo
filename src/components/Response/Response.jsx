@@ -1,70 +1,41 @@
-import { useState} from 'react'
+
 import styles from './Response.less'
-import { List} from 'antd';
-import { AiOutlineArrowsAlt } from 'react-icons/ai';
 import { BsFillRecordFill } from "react-icons/bs";
-import { Modal } from 'antd';
+import ReactJson from 'react-json-view';
+import { isEmpty } from 'lodash';
 
-
-const Response = ({apiInfo}) => {
-    const [isModalVisible, setIsModalVisible] = useState(false);
-    const [modelShow, setModelShow] = useState();
-
-    const showModal = (value) => {
-        setIsModalVisible(true);
-        setModelShow(value);
-        };
-
-    const handleOk = () => {
-    setIsModalVisible(false);
-  };
-
-    const handleCancel = () => {
-    setIsModalVisible(false);
-  };
-
-  //console.log("RRRR",apiInfo.responseKey.map((item)=>(item)));
+export default function Response({response}) {
+ 
   return (
-      
-    <div className={styles.response}>
-        <h3>Response</h3>
-        <List className={styles.responseList}>
-            <List.Item>
-                <div className={styles.responseRow}>
-                    <BsFillRecordFill className={styles.iconGreenCircle} />
-                    <span>200</span>
-                </div> 
-                <div className={styles.responseModal} onClick={()=>showModal(true)}>
-                    < AiOutlineArrowsAlt />
+    <div className={styles.Res}>
+        <div className={styles.ResTitle}>
+            <span>RESPONSE</span>
+        </div>
+        {isEmpty(response)?
+            <div className={styles.ResContent}>
+                <div className={styles.ResText}>
+                    <span>Click <code>Try It!</code> to start a request and see the response here!</span>
+                    <span>Or choose an example:</span>
                 </div>
-            </List.Item>
-            <List.Item>
-                <div className={styles.responseRow}>
-                    <BsFillRecordFill className={styles.iconRedCircle}/>
-                    <span>400</span>
-                </div> 
-                <div className={styles.responseModal} onClick={()=> showModal(false)}>
-                    < AiOutlineArrowsAlt />
+                <div className={styles.ResCircle}>
+                    <div>
+                        <BsFillRecordFill className={styles.iconGreenCircle} />
+                        <span>200 - Result</span>
+                    </div>
+                    <div>
+                        <BsFillRecordFill className={styles.iconRedCircle}/>
+                        <span>400 - Result</span>
+                    </div>
                 </div>
-            </List.Item>
-        </List>
-        <Modal title="Response" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
-            <div>
-                <h4>RESPONSE BODY</h4>
-                <div className={styles.modalContent}>
-                    {modelShow? (apiInfo.responseKey.map(
-                        (item, index) => (
-                            <ul>
-                                <li key={index}>{item}</li>
-                            </ul>
-                        )        
-                                )
-                    ):<span>"error"</span>}
-                </div>
+            </div> :
+            <div className={styles.ResContent}>
+                <ReactJson src={response}/>
             </div>
-            
-        </Modal>
+
+        }
+
+
+
     </div>
   )
 }
-export default Response;

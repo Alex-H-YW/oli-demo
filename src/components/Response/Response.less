@@ -1,62 +1,63 @@
-
-.response {
-    flex-direction: column;
+.Res {
     display: flex;
-    align-items: center;
-    width: 100%;
-    padding: 15px;
-    h3 {
-        align-self: start;
-    }
-    .responseList {
-        max-width: 800px;
-        width: 100%;
-        flex-grow: 1;
-        background-color: rgb(249, 249, 249);
-        border: 1px solid rgb(230, 225, 225);
-        border-radius: 10px;
-        
-    }
-    List.Item {
-        display: flex;
-        justify-content: space-between;
-    }
-    .responseRow {
-        display: flex;
-        text-align: center;
-    }
-    span {
-        color: rgb(109, 103, 103);
-        font-weight: bolder;
-        padding: 5px;
-    }
-    .ant-col {
-        text-align: center;
-    }
-    .iconGreenCircle {
-        color: green;
-        font-size: 20px;
-        align-self: center;
-    }
-    .iconRedCircle {
-        color: rgb(196, 24, 24);
-        font-size: 20px;
-        align-self: center;
-    }
-    .responseModal {
-        padding-right: 5px;
-        font-size:  15px;
-        font-weight: bold;
-        cursor: pointer;
-    }
-
-}
-
-.modalContent {
+    flex-direction: column;
+    background-color: rgb(249, 249, 249);
     border: 1px solid rgb(230, 225, 225);
     border-radius: 10px;
-    span {
-        padding-left: 5px;
-        font-size: 8px;
+    .ResTitle {
+        padding: 15px;
+        border-bottom: 1px solid rgb(230, 225, 225);
+        font-weight: bold;
+        color: #637288;
     }
+    .ResContent {
+        overflow: auto;
+        height:100%;
+        max-height: 500px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color:#637288;
+        .ResText {
+            padding: 30px;
+            text-align: center;
+            code {
+                color: #4f5a66;
+                background: rgba(0,0,0,.05);
+                border: 1px solid rgba(0,0,0,.1);
+                border-radius: 5px;
+                font-weight: bold;
+                padding: 1px 3px;
+                letter-spacing: -1px;
+            }
+            span {
+                display: inline-block;
+            }
+        }
+
+    }
+    .ResCircle{
+        display: flex;
+        justify-content: center;
+        div{
+            display: flex;
+            justify-content: center;
+        }
+        .iconGreenCircle {
+            color: green;
+            font-size: 20px;
+        }
+        .iconRedCircle {
+            color: rgb(196, 24, 24);
+            font-size: 20px;
+        }
+        span{
+            padding-right: 10px;
+            font-weight: bold;
+            color: #4f5a66;
+
+        }
+    }
+
 }

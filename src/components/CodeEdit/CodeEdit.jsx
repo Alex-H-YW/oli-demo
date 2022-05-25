@@ -5,14 +5,19 @@ import "codemirror/lib/codemirror.css";
 import 'codemirror/theme/abcdef.css';
 import { Input, Button } from 'antd';
 import { useEffect, useState } from 'react';
-import { isEmpty } from 'lodash';
+import Response from '../Response/Response'
+import axios from 'axios';
 
 export default function CodeEdit({formData,apiInfo}) {
   console.log("formdata",formData);
-  const codeDisplay = `const sdk = require('api')('@fintel/v0.0#1mld74kq6wam9o');
-  sdk['insider-trades']({country: 'us', symbol: 'tsla'}) `
-
-
+  const [response, setResponse] = useState();
+  const baseURL = 'https://api.finmarketdata.com/new_watchlist'
+  const handleGetReq =()=> {
+    axios.get(baseURL).then((res)=>{
+      setResponse(res.data)
+    })
+  }
+  
   return (
     <div className={styles.codeMirror}>
       <div className={styles.HeaderApi}>
@@ -33,7 +38,7 @@ export default function CodeEdit({formData,apiInfo}) {
             theme: 'abcdef',
             mode: 'javascript',
           }}
-            value={codeDisplay}
+              value="hello world"
               height="150px"
               //extensions={[javascript({ jsx: true })]}
               onChange={(value, viewUpdate) => {
@@ -42,13 +47,13 @@ export default function CodeEdit({formData,apiInfo}) {
           />
       </div>
       <div className={styles.try}>
-        <Button className={styles.tryBtn}>
+        <Button className={styles.tryBtn} onClick={()=>handleGetReq()}>
           <span>Try It!</span>
         </Button>
-
       </div>
-
-          
+      <div className={styles.resBox}>
+        <Response response={response}/>
+      </div>       
     </div>
   )
 }

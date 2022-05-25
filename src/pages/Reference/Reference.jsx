@@ -1,6 +1,6 @@
 import { useContext,useState, useEffect, useRef} from 'react';
 import SideBar from '../../components/Header/SideBar/SideBar';
-import Response from '../../components/Response/Response';
+import ResExample from '../../components/ResExample/ResExample';
 import Intro from '../../components/Intro/Intro';
 import Params from '../../components/Params/Params';
 import { Row, Col } from 'antd';
@@ -39,7 +39,7 @@ const Reference = () => {
         <Col span={6}>
           <SideBar/>
         </Col>
-        <Col span={10}>
+        <Col span={9}>
           <Row>
           {!isEmpty(apiInfo) &&
             <Intro apiInfo={apiInfo}/>
@@ -52,12 +52,12 @@ const Reference = () => {
           </Row>
           <Row>
           {!isEmpty(apiInfo) &&
-             <Response apiInfo={apiInfo}/>
+             <ResExample apiInfo={apiInfo}/>
           }
           </Row>
           
         </Col>
-        <Col span={8}>
+        <Col span={9}>
           {!isEmpty(apiInfo) &&
             <CodeEdit formData={formData} apiInfo={apiInfo}/> 
           }

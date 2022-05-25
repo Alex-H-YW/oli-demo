@@ -62,6 +62,14 @@ const ApiList: IApiList = [
             ],
     responseKey: ["time", "open", "high", "low", "close", "adj_close", "volume"]
     },
+    {id:5, 
+    name: "股票资产负债表", 
+    url: "balance_sheets", 
+    description:"获取某股票资产负载表（财报年)", 
+    params:[{id:0, name: "symbol",type: "string", description:"股票代码，格式为XXX_ASX", require:"必填"},
+            ],
+    responseKey: ["time", "open", "high", "low", "close", "adj_close", "volume"]
+    },
 ]
 
 

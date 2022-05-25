@@ -1,0 +1,62 @@
+
+.response {
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 15px;
+    h3 {
+        align-self: start;
+    }
+    .responseList {
+        max-width: 1000px;
+        width: 100%;
+        flex-grow: 1;
+        background-color: rgb(249, 249, 249);
+        border: 1px solid rgb(230, 225, 225);
+        border-radius: 10px;
+        
+    }
+    List.Item {
+        display: flex;
+        justify-content: space-between;
+    }
+    .responseRow {
+        display: flex;
+        text-align: center;
+    }
+    span {
+        color: rgb(109, 103, 103);
+        font-weight: bolder;
+        padding: 5px;
+    }
+    .ant-col {
+        text-align: center;
+    }
+    .iconGreenCircle {
+        color: green;
+        font-size: 20px;
+        align-self: center;
+    }
+    .iconRedCircle {
+        color: rgb(196, 24, 24);
+        font-size: 20px;
+        align-self: center;
+    }
+    .responseModal {
+        padding-right: 5px;
+        font-size:  15px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+}
+
+.modalContent {
+    border: 1px solid rgb(230, 225, 225);
+    border-radius: 10px;
+    span {
+        padding-left: 5px;
+        font-size: 8px;
+    }
+}
