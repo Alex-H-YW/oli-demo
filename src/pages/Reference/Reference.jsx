@@ -8,31 +8,40 @@ import { useLocation } from 'react-router-dom';
 import DataContext from "../../components/Context"
 import { isEmpty } from 'lodash';
 import CodeEdit from '../../components/CodeEdit/CodeEdit';
+import Language from '../../components/Language/Language';
 
 const Reference = () => {
   const {search}  =  useLocation();
   const apiList = useContext(DataContext);
   const [apiInfo, setApiInfo] = useState();
-  //const paramFormRef = useRef();
+  const paramFormRef = useRef();
   const [formData, setFormData] =useState();
+
+  const handleChangeLanguage = (value) => {
+    
+
+
+  }
+
  
     const updateFormData = (values) => {
       setFormData({
-        ...formData,
+        //...formData,
         ...values
       });
     };
-//console.log("test", formData);
+ 
   useEffect(() => {
     const urlId = search.split('=')[1];
     if(!isEmpty(urlId)){
       const data = apiList.find(item =>{
-              return item.id === Number(urlId)
-          })   
+              return item.id === Number(urlId);
+          })      
       setApiInfo(data);
+      setFormData();
     }      
-    },[search])
-  
+  },[search])
+
   return (
     <div className='referenceContent'>
         <Row>
@@ -47,7 +56,7 @@ const Reference = () => {
           </Row>
           <Row>
           {!isEmpty(apiInfo) &&
-             <Params apiInfo={apiInfo} update={updateFormData}/>
+             <Params apiInfo={apiInfo} update={updateFormData} ref={paramFormRef}/>
           }
           </Row>
           <Row>
@@ -58,6 +67,7 @@ const Reference = () => {
           
         </Col>
         <Col span={9}>
+          <Language handleChangeLanguage={handleChangeLanguage}/>
           {!isEmpty(apiInfo) &&
             <CodeEdit formData={formData} apiInfo={apiInfo}/> 
           }

@@ -12,6 +12,7 @@ type IApiItem = {
 type IParams = {
   id?: number;
   name: string;
+  default: string;
   type: string;
   description: string;
   require: string;

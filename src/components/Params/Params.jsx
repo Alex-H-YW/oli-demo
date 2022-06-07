@@ -1,21 +1,24 @@
 import { Input, Row, Col, List, Form } from 'antd';
-//import { useState, forwardRef, useImperativeHandle, useRef } from 'react';
+import { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react';
 import styles from './Params.less';
 
-
-
-const Params = ({apiInfo, update}) => {
-
+const Params = ({apiInfo, update}, ref ) => {
   const [form] = Form.useForm();
-  //const inputRef = useRef();
-
-  // useImperativeHandle(ref, () => ({
-  //   formFields: form.getFieldValue()
-	
-	// }));
-
+  const inputRef = useRef();
+  const [defaultData, setDefaultData] = useState();
+ 
+  useImperativeHandle(ref, () => ({
+    formFields:defaultData
+  }),
+  [{}]
+  );
   
-  
+  useEffect(()=>{
+    form.resetFields();
+    setDefaultData(form.getFieldsValue());
+  },[apiInfo]);
+
+
   return (
     <div className={styles.Params}>
       <h3>Params</h3>
@@ -25,26 +28,29 @@ const Params = ({apiInfo, update}) => {
             <List.Item>
             <Row className={styles.paramsRow}>
               <Col span={12}>
-                <div>
-                  <ul className={styles.requireParamsCotent}>
-                    <li className={styles.paramsName}>{param.name}</li>
-                    <li>{param.type}</li>
-                    <li>{param.require}</li>
-                  </ul>
-                </div>
+                <ul className={styles.requireParamsCotent}>
+                  <li className={styles.paramsName}>{param.name}</li>
+                  <li>{param.type}</li>
+                  <li>{param.require}</li>
+                </ul>
                 <div>
                   <span>{param.description}</span>
                 </div>
               </Col>
               <Col span={12}>
-                <Form form={form}
-                onValuesChange={(changeValues) => {
-                  update({
-                    ...changeValues 
-                  });
-                }}
-                >
-                <Form.Item name={param.name}>
+                <Form 
+                  
+                  ref={inputRef}
+                  form={form}
+                  onValuesChange={(changeValues,values) => {
+                    update({
+                      ...values,
+                      ...changeValues
+                    });
+                  }
+                }
+              >
+                <Form.Item name={param.name} initialValue={param.default}>
                   <Input />
                 </Form.Item>
                 </Form>
@@ -59,4 +65,4 @@ const Params = ({apiInfo, update}) => {
  
   )
 }
-export default Params;
+export default forwardRef(Params);

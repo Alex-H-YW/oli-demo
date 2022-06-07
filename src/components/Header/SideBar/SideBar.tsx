@@ -12,19 +12,16 @@ const SideBar: FC = () => {
     <div className={styles.sideBarContent}>
         <h3>WEB DATA API</h3>
         <ul>
-            <li>
-              {apiList.map((item:{id:number, name:string}) => (
-                <li key={item.id}>
-                <Link to ={`/reference/?id=${item.id}`} className={styles.Links}>
-                    <span>{item.name}</span>
-                    <Button className={styles.btnGet}>GET</Button>
-                </Link>
-                </li>
-                )      
-              )
-            }   
+          {apiList.map((item:{id:number, name:string}) => (
+            <li key={item.id}>
+              <Link to ={`/reference/?id=${item.id}`} className={styles.Links}>
+                <span>{item.name}</span>
+                <Button className={styles.btnGet}>GET</Button>
+              </Link>
             </li>
-  
+            )      
+            )
+          }   
         </ul>
 
     </div>
