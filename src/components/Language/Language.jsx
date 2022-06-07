@@ -1,5 +1,5 @@
-import styles from "./Language.less"
-import { Button } from "antd"
+import styles from "./Language.less";
+import { Button } from "antd";
 
 export default function Language({handleChangeLanguage}) {
   return (
@@ -12,7 +12,7 @@ export default function Language({handleChangeLanguage}) {
             <img src="https://img.icons8.com/external-kmg-design-flat-kmg-design/20/undefined/external-shell-summer-holiday-kmg-design-flat-kmg-design.png"/>
                <span>Shell</span>
            </Button>
-           <Button onClick={()=>handleChangeLanguage("code")}>
+           <Button onClick={()=>handleChangeLanguage("node")}>
             <img src="https://img.icons8.com/color/20/undefined/nodejs.png"/>
                Node
            </Button>
@@ -23,6 +23,10 @@ export default function Language({handleChangeLanguage}) {
            <Button onClick={()=>handleChangeLanguage("php")}>
             <img src="https://img.icons8.com/windows/20/undefined/php-logo.png"/>
             PHP
+           </Button>
+           <Button onClick={()=>handleChangeLanguage("javascript")}>
+           <img src="https://img.icons8.com/color/20/undefined/javascript--v1.png"/>
+            JS
            </Button>
        </div>
     </div>

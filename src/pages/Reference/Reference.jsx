@@ -9,19 +9,21 @@ import DataContext from "../../components/Context"
 import { isEmpty } from 'lodash';
 import CodeEdit from '../../components/CodeEdit/CodeEdit';
 import Language from '../../components/Language/Language';
+import Authentication from '../../components/Authentication/Authentication';
+import styles from './Reference.less'
 
 const Reference = () => {
   const {search}  =  useLocation();
   const apiList = useContext(DataContext);
   const [apiInfo, setApiInfo] = useState();
   const paramFormRef = useRef();
-  const [formData, setFormData] =useState();
+  const [formData, setFormData] = useState();
+  const [chooseLanguage, setChooseLanguage] = useState();
 
   const handleChangeLanguage = (value) => {
-    
-
-
-  }
+      setChooseLanguage(value);
+    }
+    console.log("chooseLanguage",chooseLanguage);
 
  
     const updateFormData = (values) => {
@@ -43,12 +45,12 @@ const Reference = () => {
   },[search])
 
   return (
-    <div className='referenceContent'>
+    <div className={styles.referenceContent}>
         <Row>
         <Col span={6}>
           <SideBar/>
         </Col>
-        <Col span={9}>
+        <Col span={9} className={styles.referenceMiddle}>
           <Row>
           {!isEmpty(apiInfo) &&
             <Intro apiInfo={apiInfo}/>
@@ -68,8 +70,9 @@ const Reference = () => {
         </Col>
         <Col span={9}>
           <Language handleChangeLanguage={handleChangeLanguage}/>
+          <Authentication />
           {!isEmpty(apiInfo) &&
-            <CodeEdit formData={formData} apiInfo={apiInfo}/> 
+            <CodeEdit formData={formData} apiInfo={apiInfo} chooseLanguage={chooseLanguage}/> 
           }
       </Col>
     </Row>

@@ -8,7 +8,7 @@ import { useLocation } from 'react-router-dom';
 export default function Response({response}) {
     const [resData, setResData] = useState();
     const {search}  =  useLocation();
-    console.log("rr", response);
+
     useEffect(()=>{
         if(!isEmpty(response)){
             setResData(response);
@@ -20,7 +20,6 @@ export default function Response({response}) {
         }
     },[search]);
 
- console.log("resData",resData);
   return (
     <div className={styles.Res}>
         <div className={styles.ResTitle}>

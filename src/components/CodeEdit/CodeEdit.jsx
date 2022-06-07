@@ -1,21 +1,23 @@
 import styles from "./CodeEdit.less"
 import { Input, Button } from 'antd';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Response from '../Response/Response'
 import axios from 'axios';
 import CodeMirror from '@uiw/react-codemirror';
 import { oneDarkTheme } from '@codemirror/theme-one-dark';
 import _, {isEmpty} from 'lodash';
+//import {shellCode} from '../../utils/LanConfig'
 
-
-export default function CodeEdit({formData,apiInfo}) {
+export default function CodeEdit({formData,apiInfo, chooseLanguage}) {
+  const [codeOutput, setCodeOutput] = useState();
   const [response, setResponse] = useState();
+
   const baseURL = `https://api.finmarketdata.com/${apiInfo.url}?${!isEmpty(formData)? 
   _.map(formData, (key, item) => {
   return `${item}=${key}`
   })
   :apiInfo.params.map(item=>`${item.name}=${item.default}`)}`
-  console.log("url",baseURL.replace(/,/g,'&'));
+  //console.log("url",baseURL.replace(/,/g,'&'));
 
   const handleGetReq =()=> {  
     axios.get(baseURL)
@@ -26,14 +28,23 @@ export default function CodeEdit({formData,apiInfo}) {
       console.log(error.response.data.error);
     })
   }
-
-
-  const codeDisplay = `curl --request GET  \n     --url   https://api.finmarketdata.com/${apiInfo.url}?${!isEmpty(formData)? 
+  
+  let codeDisplay;
+  chooseLanguage=="shell"? codeDisplay =  `curl --request GET  \n     --url   https://api.finmarketdata.com/${apiInfo.url}?${!isEmpty(formData)? 
     _.map(formData, (key, item) => {
     return `${item}=${key}`
     })
-    :apiInfo.params.map(item=>`${item.name}=${item.default}`)}`;
-const value = codeDisplay.replace(/,/g,'&')
+    :apiInfo.params.map(item=>`${item.name}=${item.default}`)}` 
+    : chooseLanguage == "node"? codeDisplay=`node`
+    : chooseLanguage == "ruby"? codeDisplay=`ruby`
+    : chooseLanguage=="php"? codeDisplay=`php`:codeDisplay=`hello`
+
+const value = codeDisplay.replace(/,/g,'&');
+
+//   useEffect(()=>{
+//     setCodeOutput(codeDisplay);
+//   }, [chooseLanguage]);
+// console.log("codeOutput",codeOutput);
   return (
     <div className={styles.codeMirror}>
       <div className={styles.HeaderApi}>
