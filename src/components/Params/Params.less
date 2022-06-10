@@ -1,8 +1,17 @@
 .Params {
-    :global(.ant-input){
-        max-width: 200px;
-        float: right;
-        border-radius: 6px;
+    :global {
+        .ant-input {
+            max-width: 200px;
+            float: right;
+            border-radius: 6px;
+            @media (max-width:1400px) {
+            width: 150px;
+            li {
+                padding-right: 0;
+            }
+            }
+            
+        }
     }
     h3 {
         align-self: start;
@@ -42,7 +51,11 @@
             &:last-child {
                 color: red;
             }
+            @media (max-width:1400px) {
+                padding-right: 15px;
+            }
         }
-    }  
+    } 
+    
     
 }

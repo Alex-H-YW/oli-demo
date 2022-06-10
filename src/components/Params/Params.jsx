@@ -50,9 +50,9 @@ const Params = ({apiInfo, update}, ref ) => {
                   }
                 }
               >
-                <Form.Item name={param.name} initialValue={param.default}>
-                  <Input />
-                </Form.Item>
+                  <Form.Item name={param.name} initialValue={param.default}>
+                    <Input />
+                  </Form.Item>
                 </Form>
               </Col>
             </Row>
