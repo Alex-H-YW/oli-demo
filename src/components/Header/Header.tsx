@@ -17,13 +17,12 @@ const Header: FC = () => {
                     <a className="nav-link" href="#">Guides</a>
                 </li>
                 <li className="nav-item">
-                {/* <a className="nav-link" href="#">API Reference</a> */}
                     <Link className="list-group-item" to="/reference">API Reference</Link> 
                 </li>
                 <li className="nav-item">
                     <a className="nav-link disabled">Changelog</a>
                 </li>
-        </ul>
+            </ul>
         </div>
         <div className={styles.navRight}>
             <Search placeholder="input search" onSearch={onSearch} style={{ width: 200 }} />

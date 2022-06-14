@@ -1,7 +1,11 @@
 import styles from "./Language.less";
 import { Button } from "antd";
 
-export default function Language({handleChangeLanguage}) {
+interface LanguageProps {
+  handleChangeLanguage: (value: string) => void;
+}
+
+const Language: React.FC<LanguageProps> = ({handleChangeLanguage}) => {
   return (
     <div className={styles.LangContent}>
        <div className={styles.LangTitle}>
@@ -32,3 +36,4 @@ export default function Language({handleChangeLanguage}) {
     </div>
   )
 }
+export default Language;

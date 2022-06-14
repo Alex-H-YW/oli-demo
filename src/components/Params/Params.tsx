@@ -1,21 +1,28 @@
 import { Input, Row, Col, List, Form } from 'antd';
 import { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react';
 import styles from './Params.less';
+import { IApiItem } from '../../interface/interface';
 
-const Params = ({apiInfo, update}, ref ) => {
+interface ParamsProps {
+  apiInfo: IApiItem;
+  update: (values: string| number) => void;
+};
+
+const Params: React.FC<ParamsProps> = ({apiInfo, update}, ref ) => {
   const [form] = Form.useForm();
-  const inputRef = useRef();
-  const [defaultData, setDefaultData] = useState();
+
+  //const inputRef = useRef();
+  //const [defaultData, setDefaultData] = useState();
  
-  useImperativeHandle(ref, () => ({
-    formFields:defaultData
-  }),
-  [{}]
-  );
+  // useImperativeHandle(ref, () => ({
+  //   formFields:defaultData
+  // }),
+  // [{}]
+  // );
   
   useEffect(()=>{
     form.resetFields();
-    setDefaultData(form.getFieldsValue());
+    //setDefaultData(form.getFieldsValue());
   },[apiInfo]);
 
 
@@ -39,8 +46,7 @@ const Params = ({apiInfo, update}, ref ) => {
               </Col>
               <Col span={12}>
                 <Form 
-                  
-                  ref={inputRef}
+                  //ref={inputRef}
                   form={form}
                   onValuesChange={(changeValues,values) => {
                     update({
@@ -65,4 +71,4 @@ const Params = ({apiInfo, update}, ref ) => {
  
   )
 }
-export default forwardRef(Params);
+export default Params;

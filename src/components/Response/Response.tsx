@@ -5,18 +5,23 @@ import { isEmpty } from 'lodash';
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
-export default function Response({response}) {
-    const [resData, setResData] = useState();
-    const {search}  =  useLocation();
+interface ResponseProps {
+    response: Array<string>
+}
+
+const Response: React.FC<ResponseProps> = ({response}) => {
+    const [resData, setResData] = useState<any>();
+    const {search} = useLocation();
 
     useEffect(()=>{
         if(!isEmpty(response)){
             setResData(response);
         }
     },[response]);
+
     useEffect(()=>{
         if(!isEmpty(response)){
-            setResData();
+            setResData(null);
         }
     },[search]);
 
@@ -45,11 +50,8 @@ export default function Response({response}) {
             <div className={styles.ResContent}>
                 <ReactJson src={resData}/>
             </div>
-
         }
-
-
-
     </div>
   )
 }
+export default Response;

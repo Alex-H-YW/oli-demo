@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
-import { IApiList } from ".././interface/interface"
+import { IApiItem } from ".././interface/interface"
+
 
 const DataContext = React.createContext({});
 
-const ApiList: IApiList = [
+const ApiList: Array<IApiItem> = [
     {id:0, 
     name: "股票列表", 
     url: "new_watchlist", 
@@ -56,7 +57,7 @@ const ApiList: IApiList = [
 
 
 export const DataProvider = ({children}:any) => {
-    const [apiInterface, setApiInterface ] = useState(ApiList)
+    const [apiInterface, setApiInterface ] = useState(ApiList);
 
         //通过Provider组件的value将state提供出去
         return (

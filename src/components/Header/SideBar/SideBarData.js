@@ -1,4 +1,4 @@
-export  const SideBarData= [
+export  const SideBarData = [
    {
     title: 'Overview',
     path:'/Overview',

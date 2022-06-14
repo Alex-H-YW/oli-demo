@@ -9,7 +9,7 @@ import _, {isEmpty} from 'lodash';
 //import {shellCode} from '../../utils/LanConfig'
 
 export default function CodeEdit({formData,apiInfo, chooseLanguage}) {
-  const [codeOutput, setCodeOutput] = useState();
+  //const [codeOutput, setCodeOutput] = useState();
   const [response, setResponse] = useState();
 
   const baseURL = `https://api.finmarketdata.com/${apiInfo.url}?${!isEmpty(formData)? 

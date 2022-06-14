@@ -1,6 +1,5 @@
-export type IApiList = IApiItem[];
-
-type IApiItem = {
+//export type IApiList = IApiItem[];
+export interface IApiItem {
   id: number;
   name: string;
   url: string;
@@ -9,7 +8,7 @@ type IApiItem = {
   responseKey: string[];
 };
 
-type IParams = {
+export interface IParams  {
   id?: number;
   name: string;
   default: string;
@@ -18,24 +17,5 @@ type IParams = {
   require: string;
 };
 
-// export interface IApiList {
-//     IApiList: IApiItem[];
 
-// }
-// export interface IApiItem {
-//     id: number;
-//     name: string;
-//     url: string;
-//     description: string;
-//     params: IParams[];
-//     responseKey: string[];
 
-// }
-
-// export interface IParams {
-//     id?: number;
-//     name: string;
-//     type: string;
-//     description: string;
-//     require: string;
-// }
